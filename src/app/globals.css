@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Design tokens — "Engineering Console" visual identity
+   Single source of truth for the entire portfolio (ADR-005/008)
+   ============================================================ */
+
+:root {
+  /* Surfaces */
+  --bg: #070a0f;
+  --bg-elev: #0d131c;
+  --bg-elev-2: #111924;
+  --bg-deep: #04060a;
+
+  /* Lines & layers */
+  --line: rgba(148, 163, 184, 0.16);
+  --line-soft: rgba(148, 163, 184, 0.09);
+
+  /* Type */
+  --text: #e6edf3;
+  --text-dim: #9aa7b7;
+  --text-mute: #64707f;
+
+  /* Accents */
+  --accent: #5eead4;
+  --accent-2: #a78bfa;
+  --ok: #34d399;
+  --warn: #fbbf24;
+  --danger: #fb7185;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 160ms;
+  --dur-med: 320ms;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-surface: var(--bg-elev);
+  --color-surface-2: var(--bg-elev-2);
+  --color-surface-deep: var(--bg-deep);
+
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+
+  --color-foreground: var(--text);
+  --color-dim: var(--text-dim);
+  --color-mute: var(--text-mute);
+
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --breakpoint-3xl: 1800px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.03) inset,
+    0 12px 40px -12px rgba(0, 0, 0, 0.8);
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-geist-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(94, 234, 212, 0.22);
+  color: var(--text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Scrollbar — console aesthetic */
+@media (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-deep);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1e2734;
+    border-radius: 999px;
+    border: 2px solid var(--bg-deep);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2b3545;
+  }
+}
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-pretty {
+  text-wrap: pretty;
+}
+
+@utility card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+}
+
+/* Subtle console grid backdrop */
+@utility bg-grid {
+  background-image: linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Film-grain / noise overlay */
+@utility bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+@utility caret-blink {
+  animation: caret-blink 1.1s steps(1) infinite;
+}
+
+@utility spin-slow {
+  animation: spin-slow 22s linear infinite;
+}
+
+@utility pulse-dot {
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+@utility flow-dot {
+  animation: flow-dot 2.8s cubic-bezier(0.55, 0, 0.45, 1) infinite;
+}
+
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(94, 234, 212, 0.5);
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 0 6px rgba(94, 234, 212, 0);
+  }
+}
+
+@keyframes flow-dot {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(28px);
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   Reduced motion
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
