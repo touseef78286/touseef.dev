@@ -1,6 +1,6 @@
 # Touseef Panjtan — Portfolio
 
-Live at **[touseef.dev](https://touseef.dev)**
+**Live**: [touseef-dev.vercel.app](https://touseef-dev.vercel.app) · final domain: **touseef.dev**
 
 Personal portfolio and case studies of an AI systems builder from Islamabad — multi-agent systems, AI automation, LLM applications, and full-stack software. Every product is treated as a system to be architected, measured, and refined.
 
@@ -28,7 +28,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+The dev server prints a local URL — open it in your browser.
 
 | Script | Purpose |
 | --- | --- |
