@@ -46,9 +46,9 @@ export function Approach() {
         <div className="grid gap-5 sm:grid-cols-2 lg:gap-6">
           {PRINCIPLES.map((p, i) => (
             <Reveal key={p.title} index={i} className="h-full">
-              <div className="card flex h-full flex-col gap-4 p-6 transition-colors duration-300 hover:border-accent/25 sm:p-7">
+              <div className="card group flex h-full flex-col gap-4 p-6 transition-colors duration-300 hover:border-accent/25 sm:p-7">
                 <div className="flex items-center justify-between">
-                  <p.icon className="h-6 w-6 text-accent" aria-hidden />
+                  <p.icon className="h-6 w-6 text-accent transition-transform duration-300 group-hover:scale-110" aria-hidden />
                   <span className="font-mono text-[11px] tracking-[0.2em] text-mute">
                     0{i + 1}
                   </span>

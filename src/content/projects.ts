@@ -158,7 +158,7 @@ export const projects: Project[] = [
       "A human approval gate converts 'magic' into engineering trust.",
     ],
     links: [
-      { label: "Case study · full write-up", href: "/projects/agentnet", kind: "docs" },
+      { label: "Back to index", href: "/", kind: "docs" },
       // [project:repo] { label: "Repository", href: "https://github.com/[owner:…]", kind: "repo" },
       // [project:demo] { label: "Live demo", href: "…", kind: "demo" },
     ],

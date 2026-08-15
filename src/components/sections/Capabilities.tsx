@@ -78,8 +78,8 @@ export function Capabilities() {
         <div className="grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
           {CAPABILITIES.map((c, i) => (
             <Reveal key={c.title} index={i % 4} className="h-full">
-              <div className="flex h-full flex-col gap-3.5 bg-surface p-6 transition-colors duration-300 hover:bg-surface-2">
-                <c.icon className="h-5 w-5 text-accent" aria-hidden />
+              <div className="group flex h-full flex-col gap-3.5 bg-surface p-6 transition-colors duration-300 hover:bg-surface-2">
+                <c.icon className="h-5 w-5 text-accent transition-transform duration-300 group-hover:scale-110" aria-hidden />
                 <h3 className="text-[15px] font-semibold tracking-tight text-foreground">
                   {c.title}
                 </h3>

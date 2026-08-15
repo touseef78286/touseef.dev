@@ -16,12 +16,17 @@ const NAV_LINKS = [
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLUListElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 12);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? Math.min(1, window.scrollY / max) : 0);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -98,13 +103,13 @@ export function Nav() {
         </ul>
 
         <div className="flex items-center gap-3">
-          <a
-            href="#contact"
-            className="hidden items-center gap-2 rounded-lg border border-accent/30 bg-accent/10 px-3 py-2 font-mono text-[13px] text-accent transition-colors hover:bg-accent/15 md:inline-flex"
-          >
-            <span aria-hidden className="pulse-dot h-1.5 w-1.5 rounded-full bg-ok" />
-            Send signal
-          </a>
+<Link
+              href="/#contact"
+              className="hidden items-center gap-2 rounded-lg border border-accent/30 bg-accent/10 px-3 py-2 font-mono text-[13px] text-accent transition-colors hover:bg-accent/15 md:inline-flex"
+            >
+              <span aria-hidden className="pulse-dot h-1.5 w-1.5 rounded-full bg-ok" />
+              Send signal
+            </Link>
           <button
             ref={toggleRef}
             type="button"
@@ -145,17 +150,24 @@ export function Nav() {
             </li>
           ))}
           <li className="mt-2 border-t border-line-soft pt-3">
-            <a
-              href="#contact"
+            <Link
+              href="/#contact"
               onClick={close}
               className="flex items-center gap-2 px-3 py-2 font-mono text-sm text-accent"
             >
               <span aria-hidden className="pulse-dot h-1.5 w-1.5 rounded-full bg-ok" />
               Send signal
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
+
+      {/* Scroll progress — engineering-console interlock */}
+      <span
+        aria-hidden
+        className="absolute bottom-0 left-0 h-0.5 origin-left bg-accent/70 transition-transform duration-75 ease-out"
+        style={{ transform: `scaleX(${progress})` }}
+      />
     </header>
   );
 }
