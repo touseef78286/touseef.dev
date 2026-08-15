@@ -57,7 +57,7 @@ export const siteConfig: SiteConfig = {
     linkedin: "https://www.linkedin.com/in/touseef-panjtan-162a04375",
     email: "Touseefpanjtan52@gmail.com",
     // Edit if the site is deployed on a custom domain.
-    domain: "touseef.dev",
+    domain: "touseef-dev.vercel.app",
   },
   curatedFacts: [
     { label: "Focus", value: "AI · Automation · Systems" },

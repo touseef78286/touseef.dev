@@ -1,6 +1,6 @@
 # Touseef Panjtan — Portfolio
 
-**Live**: [touseef-dev.vercel.app](https://touseef-dev.vercel.app) · final domain: **touseef.dev**
+**Live**: [touseef-dev.vercel.app](https://touseef-dev.vercel.app)
 
 Personal portfolio and case studies of an AI systems builder from Islamabad — multi-agent systems, AI automation, LLM applications, and full-stack software. Every product is treated as a system to be architected, measured, and refined.
 

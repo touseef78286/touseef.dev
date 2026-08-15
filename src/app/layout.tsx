@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s · Touseef Panjtan",
   },
   description: metaDescription,
-  metadataBase: new URL("https://touseef.dev"),
+  metadataBase: new URL("https://touseef-dev.vercel.app"),
   alternates: {
     canonical: "/",
   },
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: metaTitle,
     description: metaDescription,
     type: "website",
-    siteName: "touseef.dev",
+    siteName: "touseef-dev.vercel.app",
   },
   twitter: {
     card: "summary_large_image",
